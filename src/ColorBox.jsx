@@ -1,8 +1,14 @@
+
 import './ColorBox.css'
 
 function ColorBox({background, name}){
+
+    const copyText = () => {
+        navigator.clipboard.writeText(background);
+    };
+
     return(
-        <div style={{background: background}} className="ColorBox">
+        <div onClick={copyText} style={{background: background}} className="ColorBox">
             <div className='copy-contianer'>
                 <div className="box-content">
                     <span>{name}</span>
@@ -15,3 +21,4 @@ function ColorBox({background, name}){
 }
 
 export default ColorBox;
+
