@@ -1,7 +1,9 @@
+import './ColorBox.css'
 
-function ColorBox(){
+function ColorBox({background, name}){
     return(
-        <div className="ColorBox">
+        <div style={{background: background}} className="ColorBox">
+            <span>{name}</span>
             <span>MORE</span>
         </div>
     )
