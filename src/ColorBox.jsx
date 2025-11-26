@@ -3,8 +3,13 @@ import './ColorBox.css'
 function ColorBox({background, name}){
     return(
         <div style={{background: background}} className="ColorBox">
-            <span>{name}</span>
-            <span>MORE</span>
+            <div className='copy-contianer'>
+                <div className="box-content">
+                    <span>{name}</span>
+                </div>
+                <button className='copy-button'>Copy</button>
+            </div>
+            <span className='see-more'>More</span>
         </div>
     )
 }
