@@ -8,7 +8,7 @@ function Palette({palette}){
     const [format, setFormat] = useState("hex");
 
     const colorBoxes = palette.colors[level].map(color => (
-        <ColorBox background={color[format]} name={color.name}/>
+        <ColorBox background={color[format]} name={color.name} key={color.id}/>
     ))
     const changeLevel = (level) =>{
         setLevel(level);
@@ -18,10 +18,16 @@ function Palette({palette}){
     }
     return(
         <div className="Palette">
-            <Navbar level={level} changeLevel={changeLevel} handleChange={changeFormat}/>
-            <div className="Palette-colors">
-                {colorBoxes}
-            </div>
+            <Navbar
+              level={level}
+              changeLevel={changeLevel}
+              handleChange={changeFormat}
+            />
+            <div className="Palette-colors">{colorBoxes}</div>
+            <footer className="Palette-footer">
+                {palette.paletteName}
+                <span className="emoji">{palette.emoji}</span>
+            </footer>
         </div>
     )
 }
