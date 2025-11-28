@@ -1,7 +1,7 @@
 
 import { styled } from "@mui/material/styles";
 import MiniPalette from "./MiniPalette";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Root = styled("div")({
     backgroundColor: "blue",
@@ -10,13 +10,14 @@ const Root = styled("div")({
     alignItems: "flex-start",
     justifyContent: "center",
   
-    "&:hover": {
-        cursor: "pointer"
-    }
+    // "&:hover": {
+    //     cursor: "pointer"
+    // }
 });
 
 const Container = styled("div")({
     width: "50%",
+    // height: "100%",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
@@ -39,6 +40,12 @@ const Palettes = styled("div")({
 })
 
 function PaletteList({palettes}){
+    const navigate = useNavigate();
+
+    const goToPalette = (id) => {
+        navigate(`/palette/${id}`);
+    }
+
     return(
         <Root>
             <Container>
@@ -47,10 +54,13 @@ function PaletteList({palettes}){
                 </Nav>
                 <Palettes>
                     {palettes.map(palette => (
-                        <MiniPalette {...palette}/>
+                        <MiniPalette
+                          key={palette.id}
+                          {...palette}
+                          handleClick={() => goToPalette(palette.id)}
+                        />
                         ))}
                 </Palettes>
-
             </Container>
         </Root>
     )

@@ -47,16 +47,16 @@ const MiniColor = styled("div")({
 })
 
 
-function MiniPalette(palette){
-    const miniColorBoxes = palette.colors.map(color => (
+function MiniPalette({paletteName, emoji, colors, handleClick}){
+    const miniColorBoxes = colors.map(color => (
         <MiniColor style={{backgroundColor: color.color}} key={color.name}></MiniColor>
     ))
 
     return(
-        <Root>
+        <Root onClick={handleClick} >
             <Colors>{miniColorBoxes}</Colors>
             <Title>
-                {palette.paletteName} <Emoji>{palette.emoji}</Emoji>
+                {paletteName} <Emoji>{emoji}</Emoji>
             </Title>
         </Root>
     )
