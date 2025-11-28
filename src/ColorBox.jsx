@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './ColorBox.css'
 
 function ColorBox({background, name}){
@@ -32,10 +33,11 @@ function ColorBox({background, name}){
                 </div>
                 <button className='copy-button'>Copy</button>
             </div>
-            <span className='see-more'>More</span>
+            <Link to="/" onClick={(e) => e.stopPropagation()}>
+                <span className='see-more'>More</span>
+            </Link>
         </div>
     )
 }
 
 export default ColorBox;
-
