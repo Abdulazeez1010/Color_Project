@@ -33,13 +33,13 @@ function ColorBox({background, name, paletteId, id, showLink}){
                 </div>
                 <button className='copy-button'>Copy</button>
             </div>
-            {showLink &&
+            {showLink && (
             <Link 
               to={`/palette/${paletteId}/${id}`}
               onClick={(e) => e.stopPropagation()}
             >
                 <span className='see-more'>More</span>
-            </Link>
+            </Link>)
             }
         </div>
     )

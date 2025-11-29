@@ -10,14 +10,14 @@ import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import './Navbar.css'
 
-function Navbar({level, changeLevel, handleChange}){
+function Navbar({level, changeLevel, handleChange, showingAllColors}){
     const [format, setFormat] = useState("hex");
     const [open, setOpen] = useState(false);
 
     const handleFormatChange = (e) =>{
         setFormat(e.target.value);
-        setOpen(true)
-        handleChange(e.target.value)
+        setOpen(true);
+        handleChange(e.target.value);
     }
 
     const closeSnackbar = () =>{
@@ -29,6 +29,7 @@ function Navbar({level, changeLevel, handleChange}){
             <div className="logo">
                 <Link to="/">reactcolorpicker</Link>
             </div>
+            {showingAllColors && (
             <div className="slider-container">
                 <span>Level: {level}</span>
                 <div className="slider">
@@ -40,7 +41,7 @@ function Navbar({level, changeLevel, handleChange}){
                         onChange={changeLevel}
                     />
                 </div>
-            </div>
+            </div>)}
             <div className="select-container">
                 <Select value={format} onChange={handleFormatChange}>
                     <MenuItem value="hex">HEX - #ffffff</MenuItem>
