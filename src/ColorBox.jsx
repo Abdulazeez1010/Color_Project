@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ColorBox.css'
 
-function ColorBox({background, name, paletteId, id}){
+function ColorBox({background, name, paletteId, id, showLink}){
     const [copied, setCopied] = useState(false)
 
     const copyText = () => {
@@ -33,12 +33,14 @@ function ColorBox({background, name, paletteId, id}){
                 </div>
                 <button className='copy-button'>Copy</button>
             </div>
+            {showLink &&
             <Link 
               to={`/palette/${paletteId}/${id}`}
               onClick={(e) => e.stopPropagation()}
             >
                 <span className='see-more'>More</span>
             </Link>
+            }
         </div>
     )
 }
