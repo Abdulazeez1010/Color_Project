@@ -15,7 +15,6 @@ function SingleColorPalette({palettes}){
     const findPalette = (paletteId) => {
         return generatePalette(palettes.find(p => p.id === paletteId))
     }
-    // console.log(colorId)
 
     const gatherShades = (palette, colorToFilterBy) => {
         let shades = [];
