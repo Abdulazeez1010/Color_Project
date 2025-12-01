@@ -2,7 +2,7 @@ import chroma from 'chroma-js';
 import { styled } from "@mui/material/styles";
 
 
-export const ColorBoxDiv = styled("div")((showingFullPalette) => ({
+export const ColorBoxDiv = styled("div")(({showingFullPalette}) => ({
     width: "20%",
     height: showingFullPalette ? "25%" : "50%",
     margin: "0 auto",
