@@ -32,16 +32,14 @@ function SingleColorPalette({palettes}){
         setFormat(val)
     }
 
-    const _shades = gatherShades(findPalette(paletteId), colorId)
-    // console.log(_shades);
+    const _shades = gatherShades(findPalette(paletteId), colorId);
 
     const colorBoxes = _shades.map(color =>(
-        // console.log(format)
         <ColorBox
           key={color.name}
           name={color.name}
           background={color[format]}
-          showLink={false}
+          showingFullPalette={false}
         />
     ))
 
