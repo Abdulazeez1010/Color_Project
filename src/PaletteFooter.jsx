@@ -1,11 +1,12 @@
 
+import { PaletteFooterRoot, PaletteEmoji } from "./styles/PaletteFooterStyles";
 
 function PaletteFooter({palette}){
     return(
-        <footer className="Palette-footer">
+        <PaletteFooterRoot>
             {palette.paletteName}
-            <span className="emoji">{palette.emoji}</span>
-        </footer>
+            <PaletteEmoji>{palette.emoji}</PaletteEmoji>
+        </PaletteFooterRoot>
     )
 }
 
