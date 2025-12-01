@@ -1,8 +1,19 @@
 import { useState } from "react";
+import { styled } from "@mui/material/styles";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import "./Palette.css";
+
+const PaletteRoot = styled("div")({
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column"
+});
+
+const PaletteColors = styled("div")({
+    height: "90%"
+})
 
 function Palette({palette}){
     const [level, setLevel] = useState(500);
@@ -25,16 +36,16 @@ function Palette({palette}){
         setFormat(val)
     }
     return(
-        <div className="Palette">
+        <PaletteRoot>
             <Navbar
               level={level}
               changeLevel={changeLevel}
               handleChange={changeFormat}
               showingAllColors
             />
-            <div className="Palette-colors">{colorBoxes}</div>
+            <PaletteColors>{colorBoxes}</PaletteColors>
             <PaletteFooter palette={palette}/>
-        </div>
+        </PaletteRoot>
     )
 }
 
