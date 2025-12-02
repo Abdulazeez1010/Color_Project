@@ -74,6 +74,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 function NewPaletteForm() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [currentColor, setCurrentColor] = React.useState("teal");
+  const [colors, setColors] = React.useState(["purple", "#e15764"])
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -82,6 +84,14 @@ function NewPaletteForm() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const updateCurrentColor = (newColor) => {
+    setCurrentColor(newColor.hex)
+  }
+
+  const addNewColor = () => {
+    setColors([...colors, currentColor])
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -132,13 +142,25 @@ function NewPaletteForm() {
             <Button variant='contained' color='primary'>Random Color</Button>
         </div>
         <ChromePicker
-          color="purple"
-          onChangeComplete={(newColor) => console.log(newColor)}
+          color={currentColor}
+          onChangeComplete={updateCurrentColor}
         />
-        <Button variant='contained' color='primary'>Add Color</Button>
+        <Button
+          variant='contained'
+          color='primary'
+          style={{backgroundColor: currentColor}}
+          onClick={addNewColor}
+        >
+            Add Color
+        </Button>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        <ul>
+            {colors.map(color => (
+                <li style={{backgroundColor: color}}>{color}</li>
+            ))}
+        </ul>
       </Main>
     </Box>
   );
