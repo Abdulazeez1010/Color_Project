@@ -21,7 +21,11 @@ export const Nav = styled("nav")({
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    color: "white"
+    color: "white",
+    alignItems: "center",
+    "& a": {
+        color: "white"
+    }
 });
 
 export const Palettes = styled("div")({
