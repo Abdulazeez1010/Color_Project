@@ -20,6 +20,7 @@
     "react": "^19.1.1",
     "react-color": "^2.19.3",
     "react-dom": "^19.1.1",
+    "react-material-ui-form-validator": "^5.0.0",
     "react-router-dom": "^7.9.6",
     "styled-components": "^6.1.19"
   },

@@ -11,10 +11,10 @@ const Root = styled("div")({
     marginBottom: "-5px"
 })
 
-function DraggableColorbox({color}){
+function DraggableColorbox({color, name}){
     return (
         <Root style={{backgroundColor: color}}>
-            {color}
+            {name}
         </Root>
     )
 }
