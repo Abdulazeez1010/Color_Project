@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PaletteRouter from './PaletteRouter';
 import PaletteList from './PaletteList';
@@ -8,16 +8,23 @@ import './App.css'
 import seedColors from './seedColors';
 
 function App() {
+
+  const [palettes, setPalette] = useState(seedColors);
+
+
+  const savePalette = (newPalette) => {
+    setPalette([...palettes, newPalette])
+  }
   
   return (
     <div>
       <Routes>
-        <Route path="/palette/new" element={<NewPaletteForm/>}/>
-        <Route path='/' element={<PaletteList palettes={seedColors}/>}/>
-        <Route path='/palette/:id' element={<PaletteRouter/>}/>
+        <Route path="/palette/new" element={<NewPaletteForm savePalette={savePalette}/>}/>
+        <Route path='/' element={<PaletteList palettes={palettes}/>}/>
+        <Route path='/palette/:id' element={<PaletteRouter palettes={palettes}/>}/>
         <Route 
           path='/palette/:paletteId/:colorId'
-          element={<SingleColorPalette palettes={seedColors}/>}
+          element={<SingleColorPalette palettes={palettes}/>}
         />
       </Routes>
     </div>

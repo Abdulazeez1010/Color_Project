@@ -48,6 +48,6 @@ export const NavbarSlider = styled("div")({
 })
 
 export const NavbarSelectContainer = styled("div")({
-     marginLeft: "auto",
+    marginLeft: "auto",
     marginRight: "1rem"
 })
