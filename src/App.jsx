@@ -19,7 +19,12 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/palette/new" element={<NewPaletteForm savePalette={savePalette}/>}/>
+        <Route 
+          path="/palette/new" 
+          element={
+            <NewPaletteForm palettes={palettes} savePalette={savePalette}/>
+          }
+        />
         <Route path='/' element={<PaletteList palettes={palettes}/>}/>
         <Route path='/palette/:id' element={<PaletteRouter palettes={palettes}/>}/>
         <Route 
