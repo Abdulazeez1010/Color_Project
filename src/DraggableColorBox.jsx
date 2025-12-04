@@ -32,12 +32,12 @@ const BoxContent = styled("div")({
 });
 
 
-function DraggableColorbox({color, name}){
+function DraggableColorbox({color, name, handleClick}){
     return (
         <Root style={{backgroundColor: color}}>
             <BoxContent>
                 <span>{name}</span>
-                <DeleteIcon sx={{transition: "all 0.3s ease-in-out"}}/>
+                <DeleteIcon sx={{transition: "all 0.3s ease-in-out"}} onClick={handleClick}/>
             </BoxContent>
         </Root>
     )
