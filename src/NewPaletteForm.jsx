@@ -12,10 +12,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Button from '@mui/material/Button';
-import DraggableColorbox from './DraggableColorBox';
+import { arrayMove } from '@dnd-kit/sortable';
+import DraggableColorList from './DraggableColorList';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
-
 
 const drawerWidth = 400;
 
@@ -145,6 +145,17 @@ function NewPaletteForm({savePalette, palettes}) {
     setColors(colors.filter(color => color.name !== colorName))
   }
 
+  const handleDragEnd = (event) => {
+    const {active, over} = event;
+
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = colors.findIndex(c => c.name === active.id);
+    const newIndex = colors.findIndex(c => c.name === over.id);
+        
+    setColors((items) => arrayMove(items, oldIndex, newIndex));  
+}
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -233,14 +244,11 @@ function NewPaletteForm({savePalette, palettes}) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-            {colors.map(color => (
-                <DraggableColorbox
-                  key={color.name}
-                  color={color.color}
-                  name={color.name}
-                  handleClick={() => removeColor(color.name)}
-                />
-            ))}
+          <DraggableColorList 
+            colors={colors}
+            handleDragEnd={handleDragEnd}
+            removeColor={removeColor}
+          />
       </Main>
     </Box>
   );

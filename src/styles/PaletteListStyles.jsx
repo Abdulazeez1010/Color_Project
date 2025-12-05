@@ -3,10 +3,12 @@ import { styled } from "@mui/material/styles";
 
 export const Root = styled("div")({
     backgroundColor: "blue",
-    height: "100vh",
+    minHeight: "100vh",
+    width: "100%",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    overflowX: "hidden"
 });
 
 export const Container = styled("div")({

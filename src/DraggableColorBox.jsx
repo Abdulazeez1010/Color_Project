@@ -1,7 +1,8 @@
 
 import { styled } from "@mui/material/styles";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { colors } from "@mui/material";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 const Root = styled("div")({
     width: "20%",
@@ -32,15 +33,25 @@ const BoxContent = styled("div")({
 });
 
 
-function DraggableColorbox({color, name, handleClick}){
+function DraggableColorbox({id, color, name, handleClick}){
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+    const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    backgroundColor: color
+  };
     return (
-        <Root style={{backgroundColor: color}}>
+        <Root ref={setNodeRef} style={style} {...attributes} {...listeners}>
             <BoxContent>
                 <span>{name}</span>
-                <DeleteIcon sx={{transition: "all 0.3s ease-in-out"}} onClick={handleClick}/>
+                <DeleteIcon
+                  sx={{transition: "all 0.3s ease-in-out"}}
+                  onClick={handleClick}
+                  onPointerDown={(e) => e.stopPropagation()}
+                />
             </BoxContent>
         </Root>
-    )
+    );
 }
 
 export default DraggableColorbox;
