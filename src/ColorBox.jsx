@@ -18,7 +18,6 @@ function ColorBox({background, name, paletteId, id, showingFullPalette}){
     const copyText = () => {
         navigator.clipboard.writeText(background);
         changeCopyState();
-        console.log(background)
     };
 
     const changeCopyState = () => {
