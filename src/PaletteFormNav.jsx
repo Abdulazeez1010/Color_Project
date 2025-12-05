@@ -12,6 +12,10 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 const drawerWidth = 400;
 
+const PaletteFormNavRoot = styled("div")({
+  display: "flex"
+});
+
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme }) => ({
@@ -32,7 +36,15 @@ const AppBar = styled(MuiAppBar, {
       },
     },
   ],
+  flexDirection: "row",
+  justifyContent: "space-between",
+  height: "64px"
+
 }));
+
+const NavBtns = styled("div")({
+
+})
 
 function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
 
@@ -53,7 +65,7 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
     }
 
     return(
-        <div>
+        <PaletteFormNavRoot>
             <CssBaseline />
             <AppBar position="fixed" open={open} color='default'>
             <Toolbar>
@@ -72,25 +84,27 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
                 <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap component="div">
-                Persistent drawer
+                Create A Palette
                 </Typography>
-                <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
-                <TextValidator
-                    label="Palette Name"
-                    value={newPaletteName}
-                    name='newPaletteName'
-                    onChange={handleChange}
-                    validators={["required", "isPaletteNameUnique"]}
-                    errorMessages={["Enter Palette Name", "Name already used"]}
-                />
-                <Button variant='contained' color='primary' type='submit'>Save Palette</Button>
-                <Link to="/">
-                    <Button variant='contained' color='secondary'>Go Back</Button>
-                </Link>
-                </ValidatorForm>
             </Toolbar>
+            <NavBtns>
+              <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
+              <TextValidator
+                  label="Palette Name"
+                  value={newPaletteName}
+                  name='newPaletteName'
+                  onChange={handleChange}
+                  validators={["required", "isPaletteNameUnique"]}
+                  errorMessages={["Enter Palette Name", "Name already used"]}
+              />
+              <Button variant='contained' color='primary' type='submit'>Save Palette</Button>
+              </ValidatorForm>
+              <Link to="/">
+                  <Button variant='contained' color='secondary'>Go Back</Button>
+              </Link>
+            </NavBtns>
             </AppBar>
-        </div>
+        </PaletteFormNavRoot>
     )
 }
 
