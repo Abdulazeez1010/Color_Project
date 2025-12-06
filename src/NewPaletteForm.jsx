@@ -49,6 +49,19 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+const Container = styled('div')({
+  width: "90%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center"
+});
+
+const Buttons = styled('div')({
+  width: "100%"
+})
+
 function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
 
   const theme = useTheme();
@@ -122,7 +135,9 @@ function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-          },
+             display: "flex",
+          alignItems: "center"
+          }
         }}
         variant="persistent"
         anchor="left"
@@ -134,29 +149,33 @@ function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Typography variant='h4'>Design Your Palette</Typography>
-        <div>
-            <Button
-              variant='contained'
-              color='error'
-              onClick={clearColors}
-            >
-              Clear Palette
-            </Button>
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={addRandomColor}
-              disabled={paletteIsFull}
-            >
-              Random Color
-            </Button>
-        </div>
-        <ColorPickerForm
-          paletteIsFull={paletteIsFull}
-          colors={colors}
-          addNewColor={addNewColor}
-        />
+        <Container>
+          <Typography variant='h4' gutterBottom>Design Your Palette</Typography>
+          <Buttons>
+              <Button
+                variant='contained'
+                color='error'
+                onClick={clearColors}
+                sx={{width: "50%"}}
+              >
+                Clear Palette
+              </Button>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={addRandomColor}
+                disabled={paletteIsFull}
+                sx={{width: "50%"}}
+              >
+                Random Color
+              </Button>
+          </Buttons>
+          <ColorPickerForm
+            paletteIsFull={paletteIsFull}
+            colors={colors}
+            addNewColor={addNewColor}
+          />
+        </Container>
         
       </Drawer>
       <Main open={open}>
