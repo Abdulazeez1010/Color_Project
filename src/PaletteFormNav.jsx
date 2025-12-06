@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import PaletteMetaForm from './PaletteMetaForm';
 
 const drawerWidth = 400;
 
@@ -48,22 +48,6 @@ const NavBtns = styled("div")({
 
 function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
 
-    const [newPaletteName, setNewPaletteName] = React.useState("");
-
-    React.useEffect( () => {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => 
-            palettes.every(
-                ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase()
-            )
-        );
-      });
-    
-    const handleChange = (evt) => {
-        const {name, value} = evt.target
-        if (name === "newColorName") setNewColorName(value);
-        if (name === "newPaletteName") setNewPaletteName(value);
-    }
-
     return(
         <PaletteFormNavRoot>
             <CssBaseline />
@@ -88,17 +72,7 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
                 </Typography>
             </Toolbar>
             <NavBtns>
-              <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
-              <TextValidator
-                  label="Palette Name"
-                  value={newPaletteName}
-                  name='newPaletteName'
-                  onChange={handleChange}
-                  validators={["required", "isPaletteNameUnique"]}
-                  errorMessages={["Enter Palette Name", "Name already used"]}
-              />
-              <Button variant='contained' color='primary' type='submit'>Save Palette</Button>
-              </ValidatorForm>
+              <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
               <Link to="/">
                   <Button variant='contained' color='secondary'>Go Back</Button>
               </Link>
