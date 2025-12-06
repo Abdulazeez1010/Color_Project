@@ -38,15 +38,25 @@ const AppBar = styled(MuiAppBar, {
   ],
   flexDirection: "row",
   justifyContent: "space-between",
+  alignItems: "center",
   height: "64px"
 
 }));
 
 const NavBtns = styled("div")({
-
+  marginRight: "1rem",
+  '& a':{
+    textDecoration: "none"
+  }
 })
 
 function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
+
+  const [formShowing, setFormShowing] = React.useState(false)
+
+  const showForm = () => {
+  setFormShowing(true)
+}
 
     return(
         <PaletteFormNavRoot>
@@ -72,12 +82,15 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
                 </Typography>
             </Toolbar>
             <NavBtns>
-              <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
               <Link to="/">
-                  <Button variant='contained' color='secondary'>Go Back</Button>
+                  <Button variant='contained' color='secondary' sx={{margin: "0 0.5rem"}}>Go Back</Button>
               </Link>
+              <Button variant="contained" onClick={showForm} sx={{margin: "0 0.5rem"}}>
+                Save
+              </Button>
             </NavBtns>
             </AppBar>
+            {formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
         </PaletteFormNavRoot>
     )
 }
