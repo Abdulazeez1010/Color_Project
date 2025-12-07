@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import Button from '@mui/material/Button';
 import PaletteMetaForm from './PaletteMetaForm';
 import { PaletteFormNavRoot, AppBar, NavBtns } from './styles/PaletteFormNavStyles';
@@ -38,7 +38,7 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
                     open && { display: 'none' },
                 ]}
                 >
-                <MenuIcon />
+                <AddToPhotosIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap component="div">
                 Create A Palette
