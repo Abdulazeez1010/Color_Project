@@ -8,8 +8,9 @@ export const Root = styled("div")({
     padding: "0.5rem",
     position: "relative",
     // overflow: "hidden",
-    "&:hover": {
-        cursor: "pointer"
+    cursor: "pointer",
+    "&:hover svg": {
+        opacity: 1
     }
 });
 
@@ -45,3 +46,7 @@ export const MiniColor = styled("div")({
     position: "relative",
     marginBottom: "-5px"
 });
+
+export const Delete = styled("div")({
+
+})
