@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import sizes from "./sizes";
 
 export const PaletteRoot = styled("div")({
     height: "100vh",
@@ -20,7 +21,19 @@ export const GoBackBox = styled("div")({
     cursor: "pointer",
     marginBottom: "-5px",
     opacity: 1,
-    backgroundColor: "black"
+    backgroundColor: "black",
+    [sizes.down("lg")]: {
+        width: "25%",
+        height: "33.3333%"
+    },
+    [sizes.down("md")]: {
+        width: "50%",
+        height: "20%"
+    },
+    [sizes.down("xs")]: {
+        width: "100%",
+        height: "10%"
+    }
 })
 
 export const BackButton = styled(Link)({
