@@ -1,13 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import { ChromePicker } from 'react-color';
-
-const StyledChromePicker = styled(ChromePicker)({
-  width: "100% !important",
-  marginTop: "2rem"
-});
+import { StyledChromePicker } from './styles/ColorPickerFormStyles';
 
 function ColorPickerForm({paletteIsFull, colors, addNewColor}){
 

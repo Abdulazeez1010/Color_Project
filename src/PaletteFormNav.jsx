@@ -1,54 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import PaletteMetaForm from './PaletteMetaForm';
-
-const drawerWidth = 400;
-
-const PaletteFormNavRoot = styled("div")({
-  display: "flex"
-});
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  variants: [
-    {
-      props: ({ open }) => open,
-      style: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: `${drawerWidth}px`,
-        transition: theme.transitions.create(['margin', 'width'], {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-      },
-    },
-  ],
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  height: "64px"
-
-}));
-
-const NavBtns = styled("div")({
-  marginRight: "1rem",
-  '& a':{
-    textDecoration: "none"
-  }
-})
+import { PaletteFormNavRoot, AppBar, NavBtns } from './styles/PaletteFormNavStyles';
 
 function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
 
