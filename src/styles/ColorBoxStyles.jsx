@@ -1,5 +1,6 @@
 import chroma from 'chroma-js';
 import { styled } from "@mui/material/styles";
+import sizes from './sizes';
 
 
 export const ColorBoxDiv = styled("div")(({showingFullPalette}) => ({
@@ -13,6 +14,18 @@ export const ColorBoxDiv = styled("div")(({showingFullPalette}) => ({
     "&:hover button": {
         opacity: "1",
         transition: "0.5s"
+    },
+    [sizes.down("lg")]: {
+        width: "25%",
+        height: showingFullPalette ? "20%" : "50%"
+    },
+    [sizes.down("md")]: {
+        width: "50%",
+        height: showingFullPalette ? "10%" : "50%"
+    },
+    [sizes.down("xs")]: {
+        width: "100%",
+        height: showingFullPalette ? "5%" : "10%"
     }
 }))
 
