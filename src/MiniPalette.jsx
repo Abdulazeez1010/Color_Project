@@ -1,8 +1,8 @@
 
-import { Root, Colors, Title, Emoji, MiniColor, Delete } from "./styles/MiniPaletteStyles";
+import { Root, Colors, Title, Emoji, MiniColor } from "./styles/MiniPaletteStyles";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function MiniPalette({paletteName, emoji, colors, handleClick}){
+function MiniPalette({paletteName, emoji, colors, handleClick, handleDelete, id}){
     const miniColorBoxes = colors.map(color => (
         <MiniColor
           style={{backgroundColor: color.color}}
@@ -10,10 +10,15 @@ function MiniPalette({paletteName, emoji, colors, handleClick}){
         />
     ));
 
+    const deletePalette = (e) => {
+        e.stopPropagation();
+        handleDelete(id)
+    }
+
     return(
         <Root onClick={handleClick} >
-            <Delete>
-                <DeleteIcon sx={{
+                <DeleteIcon
+                  sx={{
                     color: "white",
                     backgroundColor: "#eb3d30",
                     width: "20px",
@@ -25,8 +30,9 @@ function MiniPalette({paletteName, emoji, colors, handleClick}){
                     zIndex: 10,
                     opacity: 0,
                     transition: "all 0.3s ease-in-out"
-                }}/>
-            </Delete>
+                  }}
+                  onClick={deletePalette}
+                />
             <Colors>{miniColorBoxes}</Colors>
             <Title>
                 {paletteName} <Emoji>{emoji}</Emoji>

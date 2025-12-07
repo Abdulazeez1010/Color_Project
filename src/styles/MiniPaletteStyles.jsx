@@ -46,7 +46,3 @@ export const MiniColor = styled("div")({
     position: "relative",
     marginBottom: "-5px"
 });
-
-export const Delete = styled("div")({
-
-})

@@ -21,6 +21,10 @@ function App() {
     setPalette(prev => [...prev, newPalette])
   }
 
+  const deletePalette = (id) => {
+    setPalette(prev => prev.filter(palette => palette.id !== id))
+  }
+
   return (
     <div>
       <Routes>
@@ -30,7 +34,7 @@ function App() {
             <NewPaletteForm palettes={palettes} savePalette={savePalette}/>
           }
         />
-        <Route path='/' element={<PaletteList palettes={palettes}/>}/>
+        <Route path='/' element={<PaletteList palettes={palettes} deletePalette={deletePalette} />}/>
         <Route path='/palette/:id' element={<PaletteRouter palettes={palettes}/>}/>
         <Route 
           path='/palette/:paletteId/:colorId'
