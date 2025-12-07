@@ -55,8 +55,12 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
   const [formShowing, setFormShowing] = React.useState(false)
 
   const showForm = () => {
-  setFormShowing(true)
-}
+    setFormShowing(true)
+  }
+
+  const hideForm = () => {
+    setFormShowing(false)
+  }
 
     return(
         <PaletteFormNavRoot>
@@ -90,7 +94,13 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
               </Button>
             </NavBtns>
             </AppBar>
-            {formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
+            {formShowing && (
+              <PaletteMetaForm
+                palettes={palettes}
+                handleSubmit={handleSubmit}
+                hideForm={hideForm}
+              />
+            )}
         </PaletteFormNavRoot>
     )
 }
