@@ -1,6 +1,7 @@
 
 import { styled } from "@mui/material/styles";
 import sizes from "./sizes";
+import bg from "./bg.svg"
 
 export const Root = styled("div")({
     backgroundColor: "blue",
@@ -9,7 +10,14 @@ export const Root = styled("div")({
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
-    overflowX: "hidden"
+    // background by SVGBackgrounds.com
+    backgroundColor: "#394BAD",
+    backgroundImage: `url(${bg})`,
+    // overflow: "scroll"
+});
+
+export const Heading = styled("h1")({
+    fontSize: "2rem"
 });
 
 export const Container = styled("div")({
@@ -48,6 +56,6 @@ export const Palettes = styled("div")({
     },
     [sizes.down("xs")]: {
         gridTemplateColumns: "repeat(1, 100%)",
-        gridGap: "1rem"
+        gridGap: "1.4rem"
     }
 });

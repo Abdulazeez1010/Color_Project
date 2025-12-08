@@ -1,7 +1,7 @@
 
 import { useNavigate, Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
-import { Root, Container, Nav, Palettes } from "./styles/PaletteListStyles";
+import { Root, Container, Nav, Palettes, Heading } from "./styles/PaletteListStyles";
 
 function PaletteList({palettes, deletePalette}){
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ function PaletteList({palettes, deletePalette}){
         <Root>
             <Container>
                 <Nav>
-                     <h1>React Colors</h1>
+                     <Heading>React Colors</Heading>
                      <Link to="/palette/new">Create Palette</Link>
                 </Nav>
                 <Palettes>
