@@ -1,6 +1,8 @@
 import { styled } from "@mui/material/styles";
 import MuiAppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
 import { DRAWER_WIDTH } from "../constants";
+import sizes from "./sizes";
 
 const drawerWidth = DRAWER_WIDTH;
 
@@ -39,5 +41,16 @@ export const NavBtns = styled("div")({
   marginRight: "1rem",
   '& a':{
     textDecoration: "none"
+  },
+  [sizes.down("xs")]: {
+          marginRight: "0.5rem"
+      }
+});
+
+export const StyledButton = styled(Button)({
+  margin: "0 0.5rem",
+  [sizes.down("xs")]: {
+    margin: "0 0.2rem",
+    padding: "0.3rem"
   }
 });

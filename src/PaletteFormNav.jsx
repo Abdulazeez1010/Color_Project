@@ -5,9 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-import Button from '@mui/material/Button';
 import PaletteMetaForm from './PaletteMetaForm';
-import { PaletteFormNavRoot, AppBar, NavBtns } from './styles/PaletteFormNavStyles';
+import { PaletteFormNavRoot, AppBar, NavBtns, StyledButton } from './styles/PaletteFormNavStyles';
 
 function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
 
@@ -46,11 +45,13 @@ function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
             </Toolbar>
             <NavBtns>
               <Link to="/">
-                  <Button variant='contained' color='secondary' sx={{margin: "0 0.5rem"}}>Go Back</Button>
+                  <StyledButton variant='contained' color='secondary'>
+                      Go Back
+                  </StyledButton>
               </Link>
-              <Button variant="contained" onClick={showForm} sx={{margin: "0 0.5rem"}}>
+              <StyledButton variant="contained" onClick={showForm}>
                 Save
-              </Button>
+              </StyledButton>
             </NavBtns>
             </AppBar>
             {formShowing && (

@@ -1,6 +1,7 @@
 
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import sizes from './sizes';
 
 export const NavbarRoot = styled("header")({
     display: "flex",
@@ -17,7 +18,10 @@ export const NavbarLogo = styled("div")({
     fontFamily: "Roboto",
     height: "100%",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    [sizes.down("xs")]: {
+        display: "none"
+    }
 })
 
 export const NavbarLogoLink = styled(Link)({
@@ -44,6 +48,9 @@ export const NavbarSlider = styled("div")({
         height: "13px",
         marginLeft: "-7px",
         marginTop: "-3px"
+    },
+    [sizes.down("md")]: {
+        width: "150px"
     }
 })
 
