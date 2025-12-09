@@ -4,7 +4,6 @@ import sizes from "./sizes";
 import bg from "./bg.svg"
 
 export const Root = styled("div")({
-    backgroundColor: "blue",
     minHeight: "100vh",
     width: "100%",
     display: "flex",

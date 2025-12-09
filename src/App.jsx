@@ -4,6 +4,7 @@ import PaletteRouter from './PaletteRouter';
 import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
+import GlobalStyles from './styles/GlobalStyles';
 import './App.css'
 import seedColors from './seedColors';
 
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div>
+      <GlobalStyles/>
       <Routes>
         <Route 
           path="/palette/new" 
