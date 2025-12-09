@@ -2,7 +2,7 @@
 import { Root, Colors, Title, Emoji, MiniColor } from "./styles/MiniPaletteStyles";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function MiniPalette({paletteName, emoji, colors, handleClick, handleDelete, id, ref}){
+function MiniPalette({paletteName, emoji, colors, handleClick, openDialog, id, ref}){
     const miniColorBoxes = colors.map(color => (
         <MiniColor
           style={{backgroundColor: color.color}}
@@ -12,7 +12,7 @@ function MiniPalette({paletteName, emoji, colors, handleClick, handleDelete, id,
 
     const deletePalette = (e) => {
         e.stopPropagation();
-        handleDelete(id)
+        openDialog(id);
     }
 
     return(
