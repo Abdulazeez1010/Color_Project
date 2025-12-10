@@ -7,6 +7,7 @@ export const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open
   ({ theme }) => ({
     flexGrow: 1,
     height: "calc(100vh - 64px)",
+    // lineHeight: 0,
     padding: 0,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { useState, useEffect, createRef } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import PaletteRouter from './PaletteRouter';
 import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
@@ -7,8 +7,12 @@ import NewPaletteForm from './NewPaletteForm';
 import GlobalStyles from './styles/GlobalStyles';
 import './App.css'
 import seedColors from './seedColors';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 
 function App() {
+  const location = useLocation();
+  const nodeRef = createRef(null)
 
   const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
 
@@ -27,23 +31,35 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <GlobalStyles/>
-      <Routes>
-        <Route 
-          path="/palette/new" 
-          element={
-            <NewPaletteForm palettes={palettes} savePalette={savePalette}/>
-          }
-        />
-        <Route path='/' element={<PaletteList palettes={palettes} deletePalette={deletePalette} />}/>
-        <Route path='/palette/:id' element={<PaletteRouter palettes={palettes}/>}/>
-        <Route 
-          path='/palette/:paletteId/:colorId'
-          element={<SingleColorPalette palettes={palettes}/>}
-        />
-      </Routes>
-    </div>
+      <TransitionGroup>
+        <CSSTransition
+          key={location.pathname}
+          classNames='fade'
+          timeout={500}
+          nodeRef={nodeRef}
+          unmountOnExit
+        >
+          <div ref={nodeRef} className='page'>
+            <Routes location={location}>
+              <Route 
+                path="/palette/new" 
+                element={
+                  <NewPaletteForm palettes={palettes} savePalette={savePalette}/>
+                }
+              />
+              <Route path='/' element={<PaletteList palettes={palettes} deletePalette={deletePalette} />}/>
+              <Route path='/palette/:id' element={<PaletteRouter palettes={palettes}/>}/>
+              <Route 
+                path='/palette/:paletteId/:colorId'
+                element={<SingleColorPalette palettes={palettes}/>}
+              />
+            </Routes>
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
+    </>
   )
 }
 

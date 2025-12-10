@@ -9,6 +9,12 @@ const GlobalStyles = createGlobalStyle`
         opacity: 0;
         transition: opacity 500ms ease-out;
     }
+
+    .page {
+        height: 100vh;
+        position: fixed;
+        width: 100%;
+        }
 `;
 
 export default GlobalStyles;
