@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -12,7 +11,6 @@ import {
     GoBackBox,
     BackButton 
 } from "./styles/PaletteStyles";
-
 
 function SingleColorPalette({palettes}){
     

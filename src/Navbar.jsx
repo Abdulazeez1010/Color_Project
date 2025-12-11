@@ -6,14 +6,14 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Slider from "rc-slider";
-
 import 'rc-slider/assets/index.css';
 import { 
     NavbarRoot,
     NavbarLogo,
     NavbarLogoLink,
     NavbarSlider,
-    NavbarSelectContainer } from './styles/NavbarStyles';
+    NavbarSelectContainer
+} from './styles/NavbarStyles';
 
 function Navbar({level, changeLevel, handleChange, showingAllColors}){
     const [format, setFormat] = useState("hex");
@@ -55,7 +55,6 @@ function Navbar({level, changeLevel, handleChange, showingAllColors}){
                 </Select>
             </NavbarSelectContainer>
             <Snackbar
-            //   anchorOrigin={{vertical: "bottom", horizontal: "left"}}
               open={open}
               autoHideDuration={3000}
               onClose={closeSnackbar}

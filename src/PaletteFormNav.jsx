@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,11 +6,16 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import PaletteMetaForm from './PaletteMetaForm';
-import { PaletteFormNavRoot, AppBar, NavBtns, StyledButton } from './styles/PaletteFormNavStyles';
+import {
+  PaletteFormNavRoot,
+  AppBar,
+  NavBtns,
+  StyledButton
+} from './styles/PaletteFormNavStyles';
 
 function PaletteFormNav({open, palettes, handleDrawerOpen, handleSubmit}){
 
-  const [formShowing, setFormShowing] = React.useState(false)
+  const [formShowing, setFormShowing] = useState(false)
 
   const showForm = () => {
     setFormShowing(true)

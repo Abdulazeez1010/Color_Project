@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -9,16 +9,16 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import EmojiPicker from 'emoji-picker-react';
 
 function PaletteMetaForm({palettes, handleSubmit, hideForm}){
-    const [stage, setStage] = React.useState("form");
-    const [newPaletteName, setNewPaletteName] = React.useState("");
-
-    React.useEffect( () => {
+    const [stage, setStage] = useState("form");
+    const [newPaletteName, setNewPaletteName] = useState("");
+    
+    useEffect( () => {
         ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => 
             palettes.every(
                 ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase()
             )
         );
-      });
+    });
 
     const handleChange = (evt) => {
         const {name, value} = evt.target

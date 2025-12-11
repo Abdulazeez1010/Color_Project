@@ -1,5 +1,6 @@
+import { createRef, useCallback, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import MiniPalette from "./MiniPalette";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Dialog from '@mui/material/Dialog';
 import Avatar from '@mui/material/Avatar';
 import List from '@mui/material/List';
@@ -10,10 +11,10 @@ import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Root, Container, Nav, Palettes, Heading } from "./styles/PaletteListStyles";
-import { createRef, useCallback, useRef, useState } from "react";
 import { blue, red } from '@mui/material/colors';
+import MiniPalette from "./MiniPalette";
+import { Root, Container, Nav, Palettes, Heading } from "./styles/PaletteListStyles";
+
 
 function PaletteList({palettes, deletePalette}){
     const navigate = useNavigate();

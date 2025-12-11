@@ -1,4 +1,3 @@
-
 import { PaletteFooterRoot, PaletteEmoji } from "./styles/PaletteFooterStyles";
 
 function PaletteFooter({palette}){

@@ -18,9 +18,7 @@ function MiniPalette({paletteName, emoji, colors, openDialog, id, ref, goToPalet
     const handleClick = () => {
       goToPalette(id);
     }
-
-    console.log("RENDERING: ", paletteName)
-
+    
     return(
         <Root onClick={handleClick} ref={ref}>
                 <DeleteIcon

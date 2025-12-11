@@ -1,14 +1,14 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { StyledChromePicker } from './styles/ColorPickerFormStyles';
 
 function ColorPickerForm({paletteIsFull, colors, addNewColor}){
 
-    const [currentColor, setCurrentColor] = React.useState("teal");
-    const [newColorName, setNewColorName] = React.useState("");
+    const [currentColor, setCurrentColor] = useState("teal");
+    const [newColorName, setNewColorName] = useState("");
 
-    React.useEffect( () => {
+    useEffect( () => {
         ValidatorForm.addValidationRule('isColorNameUnique', (value) => 
             colors.every(
                 ({name}) => name.toLowerCase() !== value.toLowerCase()
