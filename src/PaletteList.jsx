@@ -12,7 +12,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Root, Container, Nav, Palettes, Heading } from "./styles/PaletteListStyles";
-import { createRef, useState } from "react";
+import { createRef, useCallback, useRef, useState } from "react";
 import { blue, red } from '@mui/material/colors';
 
 function PaletteList({palettes, deletePalette}){
@@ -21,24 +21,26 @@ function PaletteList({palettes, deletePalette}){
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
     const [deletingId, setDeletingId] = useState("");
 
-    const openDialog = (id) => {
+    const openDialog = useCallback((id) => {
         setOpenDeleteDialog(true);
         setDeletingId(id);
-    }
+    }, []);
 
     const closeDialog = () => {
         setOpenDeleteDialog(false);
         setDeletingId("");
     }
 
-    const goToPalette = (id) => {
+    const goToPalette = useCallback((id) => {
         navigate(`/palette/${id}`);
-    }
+    }, [navigate]);
 
     const handleDelete = () => {
         deletePalette(deletingId);
         closeDialog()
     }
+
+    const nodeRefs = useRef({});
 
     return(
         <Root>
@@ -50,19 +52,20 @@ function PaletteList({palettes, deletePalette}){
                 <Palettes>
                     <TransitionGroup component={null} >
                         {palettes.map(palette => {
-                            const nodeRef = createRef(null)
+                            if(!nodeRefs.current[palette.id]){
+                                nodeRefs.current[palette.id] = createRef();
+                            }
                             return (
                             <CSSTransition
                               key={palette.id}
-                              nodeRef={nodeRef}
+                              nodeRef={nodeRefs.current[palette.id]}
                               timeout={500}
                               classNames="fade"
                             >
                                 <MiniPalette
-                                  ref={nodeRef}
+                                  ref={nodeRefs.current[palette.id]}
                                   {...palette}
-                                  handleClick={() => goToPalette(palette.id)}
-                                //   handleDelete = {deletePalette}
+                                  goToPalette={goToPalette}
                                   openDialog = {openDialog}
                                 />
                             </CSSTransition>

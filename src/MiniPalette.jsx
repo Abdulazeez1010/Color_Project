@@ -1,8 +1,8 @@
-
+import React from "react";
 import { Root, Colors, Title, Emoji, MiniColor } from "./styles/MiniPaletteStyles";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function MiniPalette({paletteName, emoji, colors, handleClick, openDialog, id, ref}){
+function MiniPalette({paletteName, emoji, colors, openDialog, id, ref, goToPalette}){
     const miniColorBoxes = colors.map(color => (
         <MiniColor
           style={{backgroundColor: color.color}}
@@ -14,6 +14,12 @@ function MiniPalette({paletteName, emoji, colors, handleClick, openDialog, id, r
         e.stopPropagation();
         openDialog(id);
     }
+
+    const handleClick = () => {
+      goToPalette(id);
+    }
+
+    console.log("RENDERING: ", paletteName)
 
     return(
         <Root onClick={handleClick} ref={ref}>
@@ -41,4 +47,4 @@ function MiniPalette({paletteName, emoji, colors, handleClick, openDialog, id, r
     )
 }
 
-export default MiniPalette;
+export default React.memo(MiniPalette);
