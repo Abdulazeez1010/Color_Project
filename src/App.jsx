@@ -8,6 +8,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import './App.css'
 import seedColors from './seedColors';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import Page from './Page';
 
 
 function App() {
@@ -36,12 +37,12 @@ function App() {
       <TransitionGroup>
         <CSSTransition
           key={location.pathname}
-          classNames='fade'
+          classNames='page'
           timeout={500}
           nodeRef={nodeRef}
           unmountOnExit
         >
-          <div ref={nodeRef} className='page'>
+          <Page ref={nodeRef}>
             <Routes location={location}>
               <Route 
                 path="/palette/new" 
@@ -56,7 +57,7 @@ function App() {
                 element={<SingleColorPalette palettes={palettes}/>}
               />
             </Routes>
-          </div>
+          </Page>
         </CSSTransition>
       </TransitionGroup>
     </>

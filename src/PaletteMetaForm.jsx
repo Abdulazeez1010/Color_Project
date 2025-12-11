@@ -35,7 +35,8 @@ function PaletteMetaForm({palettes, handleSubmit, hideForm}){
             paletteName: newPaletteName,
             emoji: emoji.emoji
         }
-        handleSubmit(newPalette)
+        handleSubmit(newPalette);
+        setStage("");
     }
 
   return (
