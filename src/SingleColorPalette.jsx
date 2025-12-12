@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
 import PaletteFooter from "./PaletteFooter";
 import { generatePalette } from "./colorHelpers";
-
 import { 
     PaletteRoot,
     PaletteColors,

@@ -12,7 +12,7 @@ function DraggableColorbox({id, color, name, handleClick}){
   };
     return (
         <Root ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            <BoxContent>
+            <BoxContent color={color}>
                 <span>{name}</span>
                 <DeleteIcon
                   sx={{transition: "all 0.3s ease-in-out"}}

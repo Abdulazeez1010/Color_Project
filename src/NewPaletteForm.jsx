@@ -19,12 +19,13 @@ import {
   Container,
   Buttons 
 } from './styles/NewPaletteFormStyles';
+import seedColors from './seedColors';
 
 function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [colors, setColors] = React.useState(palettes[0].colors);
+  const [colors, setColors] = React.useState(seedColors[0].colors);
 
   const navigate = useNavigate();
 
@@ -42,6 +43,11 @@ function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
     setColors([...colors, newColor]);
   }
 
+    //   console.log(colors)
+    //   NOTE: Random color button does not work when Palette
+    // list is empty. Fix later
+    // Possibly try deleting all colors rather than setting
+    // all colors to an empty array
   const clearColors = () => {
     setColors([]);
   }

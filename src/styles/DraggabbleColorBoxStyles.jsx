@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 import { styled } from "@mui/material/styles";
 import sizes from "./sizes";
 
@@ -27,16 +28,16 @@ export const Root = styled("div")({
     }
 });
 
-export const BoxContent = styled("div")({
+export const BoxContent = styled("div")(({color}) => ({
     position: "absolute",
     width: "100%",
     left: "0px",
     bottom: "0px",
     padding: "10px",
-    color: "rgba(0, 0, 0, 0.5)",
+    color: chroma(color).luminance() <= 0.08 ? "rgba(255, 255, 255, 0.8)": "rgba(0, 0, 0, 0.6)",
     letterSpacing: "1px",
     textTransform: "uppercase",
     fontSize: "12px",
     display: "flex",
     justifyContent: "space-between"
-});
+}));
