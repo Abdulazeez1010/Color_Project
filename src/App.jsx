@@ -55,6 +55,7 @@ function App() {
                 path='/palette/:paletteId/:colorId'
                 element={<SingleColorPalette palettes={palettes}/>}
               />
+              <Route path='*' element={<PaletteList palettes={palettes} deletePalette={deletePalette} />}/>
             </Routes>
           </Page>
         </CSSTransition>

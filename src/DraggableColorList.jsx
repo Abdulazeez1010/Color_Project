@@ -22,9 +22,6 @@ function DraggableColorList({colors, removeColor, handleDragEnd}){
           coordinateGetter: sortableKeyboardCoordinates,
         })
       );
-    //   console.log(colors)
-    //   NOTE: Random color button does not work when Palette
-    // list is empty. Fix later
 
     return(
 

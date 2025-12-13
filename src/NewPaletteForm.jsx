@@ -43,19 +43,21 @@ function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
     setColors([...colors, newColor]);
   }
 
-    //   console.log(colors)
-    //   NOTE: Random color button does not work when Palette
-    // list is empty. Fix later
-    // Possibly try deleting all colors rather than setting
-    // all colors to an empty array
   const clearColors = () => {
     setColors([]);
   }
 
   const addRandomColor = () => {
-    const allColors = palettes.map(p => p.colors).flat();
-    let rand = Math.floor(Math.random() * allColors.length);
-    const randomColor = allColors[rand];
+    const allColors = seedColors.map(s => s.colors).flat();
+    let rand;
+    let randomColor;
+    let isDuplicateColor = true;
+    while(isDuplicateColor){
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand];
+      isDuplicateColor = colors.some(color => color.name === randomColor.name);
+      // console.log(randomColor);
+    }
     setColors([...colors, randomColor]);
   }
 
