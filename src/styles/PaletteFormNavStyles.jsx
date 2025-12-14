@@ -49,8 +49,12 @@ export const NavBtns = styled("div")({
 
 export const StyledButton = styled(Button)({
   margin: "0 0.5rem",
-  [sizes.down("xs")]: {
+  [sizes.down("sm")]: {
     margin: "0 0.2rem",
+    padding: "0.3rem"
+  },
+  [sizes.down("xs")]: {
+    margin: "0 0.1rem",
     padding: "0.3rem"
   }
 });

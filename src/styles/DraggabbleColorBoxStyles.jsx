@@ -39,5 +39,9 @@ export const BoxContent = styled("div")(({color}) => ({
     textTransform: "uppercase",
     fontSize: "12px",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+    [sizes.down("xs")]: {
+        bottom: "-0.3rem"
+    }
 }));

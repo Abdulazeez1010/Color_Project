@@ -13,12 +13,13 @@ import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import DraggableColorList from './DraggableColorList';
 import { 
-  drawerWidth,
   Main,
   DrawerHeader,
   Container,
   Buttons 
 } from './styles/NewPaletteFormStyles';
+import { DRAWER_WIDTH, DRAWER_WIDTH_XS } from "./constants";
+import sizes from './styles/sizes';
 import seedColors from './seedColors';
 
 function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
@@ -93,13 +94,16 @@ function NewPaletteForm({maxColors = 20, savePalette, palettes}) {
       />  
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: DRAWER_WIDTH,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: DRAWER_WIDTH,
             boxSizing: 'border-box',
              display: "flex",
-          alignItems: "center"
+             alignItems: "center",
+             [sizes.down("xs")]: {
+              width: DRAWER_WIDTH_XS
+              }
           }
         }}
         variant="persistent"

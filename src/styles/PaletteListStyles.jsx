@@ -4,7 +4,7 @@ import sizes from "./sizes";
 import bg from "./bg.svg"
 
 export const Root = styled("div")({
-    minHeight: "100vh",
+    height: "100vh",
     width: "100%",
     display: "flex",
     alignItems: "flex-start",
@@ -12,7 +12,7 @@ export const Root = styled("div")({
     // background by SVGBackgrounds.com
     backgroundColor: "#394BAD",
     backgroundImage: `url(${bg})`,
-    // overflow: "scroll"
+    overflowY: "auto"
 });
 
 export const Heading = styled("h1")({
@@ -25,6 +25,7 @@ export const Container = styled("div")({
     alignItems: "flex-start",
     flexDirection: "column",
     flexWrap: "wrap",
+    marginBottom: "1rem",
     [sizes.down("xl")]: {
         width: "80%"
     },
